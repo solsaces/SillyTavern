@@ -3003,8 +3003,7 @@ async function sendClaudeRequest(request, response) {
             controller.abort();
         });
 
-        let doSystemPrompt = request.body.model === 'claude-2' || request.body.model === 'claude-2.1';
-        let requestPrompt = convertClaudePrompt(request.body.messages, true, !request.body.exclude_assistant, doSystemPrompt);
+        let requestPrompt = convertClaudePrompt(request.body.messages, true, !request.body.exclude_assistant);
 
         if (request.body.assistant_prefill && !request.body.exclude_assistant) {
             requestPrompt += request.body.assistant_prefill;
